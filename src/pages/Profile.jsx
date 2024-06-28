@@ -17,10 +17,10 @@ const Profile = () => {
   const [userInfo, setUserInfo] = useState(user);
   const [loading, setLoading] = useState(false);
   const [posts, setPosts] = useState([]);
-  const uri = "/posts/get-user-post" + id;
+  const uri = "/posts/get-user-post/" + id;
 
   const getUser = async () => {
-    const res = await getUserInfo(user?.token, id);
+    const res = await getUserInfo(id, user?.token);
     setUserInfo(res);
   };
 
