@@ -62,9 +62,9 @@ export const fetchPosts = async (token, dispatch, uri, data) => {
       method: "POST",
       data: data || {},
     });
-    console.log(res);
-    dispatch(setPosts(res?.data));
-    return;
+    console.log(uri, res);
+    dispatch(setPosts(res.data));
+    return res.data;
   } catch (error) {
     console.error(error);
   }
@@ -83,7 +83,7 @@ export const likePost = async ({ uri, token }) => {
   }
 };
 
-export const deletePost = async ({ id, token }) => {
+export const deletePost = async (id, token) => {
   try {
     const res = await apiRequest({
       url: `/posts/` + id,

@@ -9,15 +9,15 @@ const initialState = {
 
 // Async thunk to fetch posts
 export const fetchPosts = createAsyncThunk(
-  'posts/fetchPosts',
+  "posts/fetchPosts",
   async (token, { rejectWithValue }) => {
     try {
       const response = await apiRequest({
-        uri: '/posts',
+        url: "/posts",
         token,
-        method: 'GET',
+        method: "GET",
       });
-      if (response?.status === 'failed') {
+      if (response?.status === "failed") {
         return rejectWithValue(response);
       }
       return response.data;

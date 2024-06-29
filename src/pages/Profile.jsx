@@ -26,6 +26,7 @@ const Profile = () => {
 
   const getPosts = async () => {
     const posts = await fetchPosts(user.token, dispatch, uri);
+    console.log(posts);
     setPosts(posts);
     setLoading(false);
   };

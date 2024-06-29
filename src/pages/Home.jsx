@@ -41,6 +41,7 @@ const Home = () => {
   } = useForm();
 
   const handlePostSubmit = async (data) => {
+    console.log(data);
     setPosting(true);
     setErrMsg("");
     try {
@@ -48,7 +49,7 @@ const Home = () => {
       const newData = uri ? { ...data, image: uri } : data;
 
       const res = await apiRequest({
-        uri: "/posts/create-post",
+        url: "/posts/create-post",
         data: newData,
         token: user?.token,
         method: "POST",
@@ -97,7 +98,7 @@ const Home = () => {
   const fetchFirendRequests = async () => {
     try {
       const res = await apiRequest({
-        uri: "/users/get-friend-request",
+        url: "/users/get-friend-request",
         token: user?.token,
         method: "POST",
       });
@@ -148,7 +149,6 @@ const Home = () => {
     }
   };
   const getUser = async () => {
-
     const res = await getUserInfo(user?._id, user?.token);
     const newData = { token: user?.token, ...res };
     dispatch(UserLogin(newData));
